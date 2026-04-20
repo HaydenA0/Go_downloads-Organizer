@@ -54,10 +54,15 @@ func getFileType(filename string) string {
 }
 
 func moveFileToFolder(root string, filename string, folder string) {
-	// check if the folder exists, otherwise create it
-
 	if _, err := os.Stat(root + folder); os.IsNotExist(err) {
 		os.Mkdir(root+folder, 0755)
+	}
+	// check if the file with the same nema is already in the folder
+
+	if _, err := os.Stat(root + folder + "/" + filename); err == nil {
+		// error panick
+		fmt.Println("File " + filename + " already exists in " + folder + "/")
+		return
 	}
 	err := os.Rename(root+filename, root+folder+"/"+filename)
 	if err != nil {
