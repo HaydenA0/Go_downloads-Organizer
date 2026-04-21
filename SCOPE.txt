@@ -1,0 +1,2 @@
+Find a way to make this binary execut every day at sometime
+Hint : Use Systemd Timer
