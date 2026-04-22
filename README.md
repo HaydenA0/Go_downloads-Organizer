@@ -40,3 +40,23 @@ Update the `path` variable in `main()` to point to your desired directory, then 
 ```bash
 go run main.go
 ```
+
+## NEW FEATURES
+*   CLI Flags: Use the flag package to accept the target directory as a command-line argument instead of hardcoding it in
+main.go.
+*   Configuration File: Move the extensionMap to an external config.json or config.yaml file. This allows you to update
+categories without recompiling the binary.
+
+Robustness & Safety
+*   Dry Run Mode: Add a -dry-run flag that prints which files would be moved without performing the actual move operations.
+*   Conflict Resolution: Implement logic to handle cases where a file with the same name already exists in the destination
+folder (e.g., append a timestamp or a counter to the filename).
+*   Error Logging: Instead of just failing, log errors to a file so you can debug why certain files were not moved (e.g.,
+permission issues).
+
+Features
+*   Ignore List: Allow users to define a list of files or folders to explicitly ignore (e.g., .DS_Store, specific system
+folders).
+*   Recursive Sorting: Add an option to scan subdirectories within the target directory rather than just the top level.
+
+
