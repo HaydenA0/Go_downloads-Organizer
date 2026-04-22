@@ -92,6 +92,10 @@ func main() {
 		log.Fatal(err)
 	}
 	for _, file := range files {
+		// ignore folders
+		if file.IsDir() {
+			continue
+		}
 		fileType := getFileType(file.Name())
 		folder := extensionMap[fileType]
 		moveFileToFolder(path, file.Name(), folder)
